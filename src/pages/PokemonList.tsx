@@ -25,17 +25,17 @@ function PokemonList() {
   }, [])
 
   if (isLoading) {
-    return <p>読み込み中...</p>
+    return <main className="page"><p>読み込み中...</p></main>
   }
 
   if (errorMessage) {
-    return <p>{errorMessage}</p>
+    return <main className="page"><p>{errorMessage}</p></main>
   }
 
   return (
-    <main>
+    <main className="page">
       <h1>ポケモン一覧</h1>
-      <div>
+      <div className="pokemon-grid">
         {pokemon.map((item) => (
           <PokemonCard key={item.url} pokemon={item} />
         ))}
