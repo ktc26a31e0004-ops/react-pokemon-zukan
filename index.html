@@ -1,12 +1,32 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/react-pokemon-zukan/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>react-pokemon-zukan</title>
-    <script type="module" crossorigin src="/react-pokemon-zukan/assets/index-B7OchY5L.js"></script>
-    <link rel="stylesheet" crossorigin href="/react-pokemon-zukan/assets/index-DGNrK5qb.css">
+    <title>ポケモン図鑑</title>
+    <script type="text/javascript">
+      (function(l) {
+        var redirectedPath = new URLSearchParams(l.search).get('p');
+        if (redirectedPath) {
+          var query = new URLSearchParams(l.search).get('q');
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + redirectedPath.replace(/~and~/g, '&') +
+            (query ? '?' + query.replace(/~and~/g, '&') : '') +
+            l.hash
+          );
+        } else if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <script type="module" crossorigin src="/react-pokemon-zukan/assets/index-DmsqAJGQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/react-pokemon-zukan/assets/index-CyRhxNw7.css">
   </head>
   <body>
     <div id="root"></div>
